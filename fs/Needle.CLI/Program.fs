@@ -7,7 +7,7 @@ let readFile (f:string) =
     then
       Choice1Of2(System.IO.File.ReadAllText f)
     else
-      Choice2Of2("File does not exist: " + f)
+      Choice2Of2("File not found")
 
 let needleParser = many1Chars (noneOf ".") .>> pstring "."
 
