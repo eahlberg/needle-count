@@ -34,25 +34,24 @@ run_test () {
   fi
 }
 
-for dir in "$TEST_DIR"/*/
+run_golden_tests () {
+for dir in "../$TEST_DIR"/*/
 do
+  local command=$1
   dir=${dir%*/}
   basename="${dir##*/}"
-  filename_expected="../$dir/expected-output.txt"
-  filename_input="../$dir/$basename.txt"
-  pushd hs > /dev/null || exit
-  run_golden_test "$HS_SCRIPT" "$filename_input" "$filename_expected"
-  popd > /dev/null || exit
-
-  pushd fs > /dev/null || exit
-  run_golden_test "$FS_SCRIPT" "$filename_input" "$filename_expected"
-  popd > /dev/null || exit
+  filename_expected="$dir/expected-output.txt"
+  filename_input="$dir/$basename.txt"
+  run_golden_test "$command" "$filename_input" "$filename_expected"
 done
+}
 
 pushd hs > /dev/null || exit
 run_test "$HS_SCRIPT" "non-existent-file.txt" "File not found"
+run_golden_tests "$HS_SCRIPT"
 popd > /dev/null || exit
 
 pushd fs > /dev/null || exit
 run_test "$FS_SCRIPT" "non-existent-file.txt" "File not found"
+run_golden_tests "$FS_SCRIPT"
 popd > /dev/null || exit
