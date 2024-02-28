@@ -8,7 +8,7 @@ The code has been developed and tested on Linux.
 
 ## Dev environment
 The Haskell project uses [cabal](https://cabal.readthedocs.io/en/stable/)
-(specifically `ghc` version `9.4.8, but it'll likely work with other versions
+(specifically `ghc` version `9.4.8`, but it'll likely work with other versions
 as well).
 
 The FSharp project uses `dotnet` version `8.0.101`.
@@ -16,7 +16,7 @@ The FSharp project uses `dotnet` version `8.0.101`.
 For Nix users, `shell.nix` provides all the tools needed.
 
 For non-Nix users, the easiest way would probably be to follow the instructions
-at the respective tools:
+for the respective tools:
  - [cabal](https://cabal.readthedocs.io/en/stable/getting-started.html)
  - [dotnet](https://dotnet.microsoft.com/en-us/download)
 
@@ -26,8 +26,17 @@ There are two types of tests:
 - end-to-end (e2e) tests
 
 Unit tests can be found in the respective project directories. E2E tests can be
-found in `e2e-test.sh` and the files needed are in the `e2e-test` dir. N.B.:
-the e2e tests may not work on other platforms than Linux.
+found in `e2e-test.sh` and the files needed are in the `e2e-test` dir.
+
+_N.B.: the e2e tests may not work on other platforms than Linux._
 
 It should be possible to run the tests from the project directory, see
 `Makefile`.
+
+## Caveats
+- The goal is that the code should lean more towards readability and simplicity
+  rather than performance and complexity, e.g in the usage of advanced language
+  features and extensions.
+- The F# version doesn't use libraries for things where it could be warranted
+  (e.g. argument parsing). This is mostly due to lack of familiarity with the
+  ecosystem.
