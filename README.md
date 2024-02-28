@@ -6,6 +6,10 @@ The Haskell implementation is in `hs/` and the FSharp implementation in `fs/`.
 
 The code has been developed and tested on Linux.
 
+The FSharp program has to be run using `dotnet run` either in Needle.CLI, or
+using the `--project` flag, e.g.
+`dotnet run --project Needle.CLI/Needle.CLI.fsproj`.
+
 ## Assumptions
 - If the program is given a path in another directory, e.g. `foo/foo.txt`, the
   term is assumed to be `foo.txt`, not `foo/foo.txt`.
@@ -13,6 +17,7 @@ The code has been developed and tested on Linux.
   is 2.
 - If the program is given a file `aa.txt` with contents `aaa`, "overlapping"
   matches are not counted, i.e. the expected count is 1.
+- The user running the program has to have permissions to read the file.
 
 ## Dev environment
 The Haskell project uses [cabal](https://cabal.readthedocs.io/en/stable/)
