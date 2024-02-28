@@ -6,6 +6,14 @@ The Haskell implementation is in `hs/` and the FSharp implementation in `fs/`.
 
 The code has been developed and tested on Linux.
 
+## Assumptions
+- If the program is given a path in another directory, e.g. `foo/foo.txt`, the
+  term is assumed to be `foo.txt`, not `foo/foo.txt`.
+- If the program is given a file `a.txt` with contents `aa`, the expected count
+  is 2.
+- If the program is given a file `aa.txt` with contents `aaa`, "overlapping"
+  matches are not counted, i.e. the expected count is 1.
+
 ## Dev environment
 The Haskell project uses [cabal](https://cabal.readthedocs.io/en/stable/)
 (specifically `ghc` version `9.4.8`, but it'll likely work with other versions
