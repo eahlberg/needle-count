@@ -34,20 +34,20 @@ spec = do
     it "returns 0 if there's no match" $ do
       Lib.count (mkNeedleOrError "a") "b" `shouldBe` 0
 
-    it "count exact match" $ do
+    it "counts exact match" $ do
       Lib.count (mkNeedleOrError "a") "a" `shouldBe` 1
 
-    it "count prefix" $ do
+    it "counts prefix" $ do
       Lib.count (mkNeedleOrError "a") "ab" `shouldBe` 1
 
-    it "count infix" $ do
+    it "counts infix" $ do
       Lib.count (mkNeedleOrError "a") "bac" `shouldBe` 1
 
-    it "count postfix" $ do
+    it "counts postfix" $ do
       Lib.count (mkNeedleOrError "a") "bca" `shouldBe` 1
 
-    it "count multiple matches" $ do
+    it "counts multiple matches" $ do
       Lib.count (mkNeedleOrError "a") "a a" `shouldBe` 2
 
-    it "count concatenated matches" $ do
+    it "counts concatenated matches" $ do
       Lib.count (mkNeedleOrError "a") "aa" `shouldBe` 2
