@@ -1,0 +1,1 @@
+'infix' occurs 1 times in 'infix.txt'
