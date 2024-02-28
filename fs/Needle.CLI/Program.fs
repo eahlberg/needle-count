@@ -13,22 +13,26 @@ let needleParser = many1Chars (noneOf ".") .>> pstring "."
 
 [<EntryPoint>]
 let main argv =
-     match Array.tryHead argv with
-      | None ->
-        printf "Argument missing"
-        exit 1
-      | Some path ->
-        match readFile path with
-          | Choice2Of2(errorMsg) ->
-            printf "%s" errorMsg
-            exit 1
-          | Choice1Of2(contents) ->
-            let fileName = Path.GetFileName(path)
-            match run needleParser fileName with
-            | Failure(errorMsg, _, _) ->
+     if Array.length argv > 1 then
+       printf "Too many arguments, expected one argument"
+       exit 1
+     else
+       match Array.tryHead argv with
+        | None ->
+          printf "Argument missing"
+          exit 1
+        | Some path ->
+          match readFile path with
+            | Choice2Of2(errorMsg) ->
               printf "%s" errorMsg
               exit 1
-            | Success(needle, _, _) ->
-              let result = Count.needles needle contents
-              printf "found %i" result
-              exit 0
+            | Choice1Of2(contents) ->
+              let fileName = Path.GetFileName(path)
+              match run needleParser fileName with
+              | Failure(errorMsg, _, _) ->
+                printf "%s" errorMsg
+                exit 1
+              | Success(needle, _, _) ->
+                let result = Count.needles needle contents
+                printf "found %i" result
+                exit 0
