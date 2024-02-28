@@ -1,1 +1,1 @@
-'two' occurs 2 times in 'two.txt'
+found 2

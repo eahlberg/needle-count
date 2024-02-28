@@ -30,5 +30,5 @@ let main argv =
               exit 1
             | Success(needle, _, _) ->
               let result = Count.needles needle contents
-              printf "'%s' occurs %i times in '%s'" needle result fileName
+              printf "found %i" result
               exit 0

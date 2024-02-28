@@ -15,6 +15,7 @@ run_test () {
     local expected
     expected=$(cat "$filename_expected")
     printf "not ok\n\nexpected: %s\nactual: %s\n" "$expected" "$actual"
+    printf "command: %s" "$test_command"
     exit 1
   fi
 }

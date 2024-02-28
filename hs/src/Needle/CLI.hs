@@ -41,16 +41,7 @@ runApp arg = do
       case eNeedle of
         Left NeedleEmpty -> System.die "Search term missing"
         Right needle ->
-          putStrLn $
-            mconcat
-              [ "'",
-                Text.unpack (unNeedle needle),
-                "' occurs ",
-                show (NeedleLib.count needle haystack),
-                " times in '",
-                fileName,
-                "'"
-              ]
+          putStrLn $ "found " <> show (NeedleLib.count needle haystack)
 
 main :: IO ()
 main = execParser opts >>= runApp
