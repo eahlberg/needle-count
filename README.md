@@ -10,6 +10,14 @@ The FSharp program has to be run using `dotnet run` either in Needle.CLI, or
 using the `--project` flag, e.g.
 `dotnet run --project Needle.CLI/Needle.CLI.fsproj`.
 
+## Caveats
+- The goal is that the code should lean more towards readability and simplicity
+  rather than performance and complexity, e.g in the usage of advanced language
+  features and extensions.
+- The F# version doesn't use libraries for things where it could be warranted
+  (e.g. argument parsing). This is mostly due to lack of familiarity with the
+  ecosystem.
+
 ## Assumptions
 - If the program is given a path in another directory, e.g. `foo/foo.txt`, the
   term is assumed to be `foo.txt`, not `foo/foo.txt`.
@@ -45,11 +53,3 @@ _N.B.: the e2e tests may not work on other platforms than Linux._
 
 It should be possible to run the tests from the project directory, see
 `Makefile`.
-
-## Caveats
-- The goal is that the code should lean more towards readability and simplicity
-  rather than performance and complexity, e.g in the usage of advanced language
-  features and extensions.
-- The F# version doesn't use libraries for things where it could be warranted
-  (e.g. argument parsing). This is mostly due to lack of familiarity with the
-  ecosystem.
