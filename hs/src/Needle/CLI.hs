@@ -5,7 +5,7 @@ import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Data.Text.Encoding as Text
 import Data.Text.Encoding.Error (UnicodeException (..))
-import Needle.Lib (NeedleError (..), parseNeedle, unNeedle)
+import Needle.Lib (NeedleError (..), parseNeedle)
 import qualified Needle.Lib as NeedleLib
 import Options.Applicative
 import qualified System.Directory as Dir
@@ -36,8 +36,7 @@ runApp arg = do
     Left FileNotFound -> System.die "File not found"
     Left (EncodingError e) -> System.die $ show e
     Right haystack -> do
-      let fileName = FilePath.takeFileName filePath
-          eNeedle = parseNeedle $ Text.pack (FilePath.takeBaseName filePath)
+      let eNeedle = parseNeedle $ Text.pack $ FilePath.takeBaseName filePath
       case eNeedle of
         Left NeedleEmpty -> System.die "Search term missing"
         Right needle ->
