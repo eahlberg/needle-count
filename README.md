@@ -36,8 +36,8 @@ The FSharp project uses `dotnet` version `8.0.101`.
 
 For Nix users, `shell.nix` provides all the tools needed.
 
-For non-Nix users, the easiest way would probably be to follow the instructions
-for the respective tools:
+For instructions on how to install the required tools for non-Nix users, follow
+the tools' respective instructions at:
  - [cabal](https://cabal.readthedocs.io/en/stable/getting-started.html)
  - [dotnet](https://dotnet.microsoft.com/en-us/download)
 
