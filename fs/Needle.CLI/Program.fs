@@ -33,6 +33,6 @@ let main argv =
                 printf "%s" errorMsg
                 exit 1
               | Success(needle, _, _) ->
-                let result = Count.needles needle contents
+                let result = Lib.count needle contents
                 printf "found %i" result
                 exit 0

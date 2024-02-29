@@ -2,8 +2,8 @@
 
 open System.IO
 
-module Count =
-  let needles (needle: string) (haystack: string) =
+module Lib =
+  let count (needle: string) (haystack: string) =
       let rec go (needle: string) (hay: string) (count: int) =
           let hayLength = String.length hay
           let hayEmpty = hayLength = 0
